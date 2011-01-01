@@ -23,5 +23,3 @@ Twh documentation is available as in POD. So you can do:
     % perldoc Twh
 
 to read the documentation online with your favorite pager.
-
-polocky
