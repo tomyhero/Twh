@@ -14,8 +14,6 @@ sub create_config {
 sub _new_instance {
     my $class = shift;
     my $config = $class->create_config(); 
-    use Data::Dumper;
-    warn Dumper $config;
     return FormValidator::LazyWay->new( config => $config ,result_class => 'Twh::Validator::Result' );
 }
 
