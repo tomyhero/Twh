@@ -29,9 +29,12 @@ sub match {
             $c->handle_not_found();
             return;
         }
+        $controller->prepare( $c);
         $controller->$action( $c );
         $self->set_template( $c, $res );
-        $c->render();
+        my $res = $c->render();
+        $controller->finalize( $c );
+        return $res;
     }
     else {
         $c->handle_not_found();
@@ -41,6 +44,8 @@ sub set_template {
     my $self= shift;
     my $c = shift;
     my $res = shift;
+    if($c->template){ return  }
+
     if($res->{controller} eq 'Root') {
         $c->template( sprintf('%s.tx',lc $res->{action} ));
     }

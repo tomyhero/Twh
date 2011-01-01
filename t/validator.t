@@ -1,6 +1,4 @@
-#!/usr/bin/env perl
-use warnings;
-use strict;
+use Test::Most;
 use File::Spec;
 our @LIBS;
 BEGIN {
@@ -11,11 +9,11 @@ BEGIN {
     );
 }
 use lib @LIBS;
-use Twh::PC;
+use_ok('Twh::Validator');
 
-$Log::Minimal::AUTODUMP=1;
-use Devel::KYTProf;
+{
+    my $validator = Twh::Validator->instance();
+}
 
-my $psgi_handler =Twh::PC->new->psgi_handler();
 
-return $psgi_handler;
+done_testing();
