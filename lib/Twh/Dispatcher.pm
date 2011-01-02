@@ -29,11 +29,11 @@ sub match {
             $c->handle_not_found();
             return;
         }
-        $controller->prepare( $c);
+        $c->PREPARE();
         $controller->$action( $c );
         $self->set_template( $c, $res );
         my $res = $c->render();
-        $controller->finalize( $c );
+        $c->FINALIZE();
         return $res;
     }
     else {

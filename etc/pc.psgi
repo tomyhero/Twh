@@ -17,5 +17,15 @@ $Log::Minimal::AUTODUMP=1;
 use Devel::KYTProf;
 
 my $psgi_handler =Twh::PC->new->psgi_handler();
+use Plack::Session::Store::Cache;
+use Plack::Session::State::Cookie;
+use Cache::FastMmap;
 
-return $psgi_handler;
+use Plack::Builder;
+my $cache = Cache::FastMmap->new( expire_time => '7d' );
+builder {
+    enable 'Session', 
+        state => Plack::Session::State::Cookie->new( session_key => 'twh_session' ),
+        store => Plack::Session::Store::Cache->new( cache => $cache );
+    $psgi_handler;
+};

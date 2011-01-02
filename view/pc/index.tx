@@ -1,2 +1,11 @@
-index.tx
+[% INCLUDE 'header.inc' %]
+
+[% IF c.member %]
+    [% c.member.screen_name %]
+[% ELSE %]
+    <a href="/auth/login/">login</a>
+[% END %]
+
+
+[% INCLUDE 'footer.inc' %]
 

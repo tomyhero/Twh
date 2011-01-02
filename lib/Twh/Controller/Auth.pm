@@ -19,7 +19,20 @@ sub login {
 sub callback {
     my ( $self, $c ) = @_;
     my %params = ( %{$c->req->as_fdat} , base64 => $c->req->cookies->{twitter_oauth}  );
-    $c->api('Twitter')->auth(\%params);
+    my $api_res = $c->api('Twitter')->auth(\%params);
+    $c->res->cookies->{twitter_oauth} = { 
+        value => 1,
+        expires => time - 24 * 60 * 60,
+    };
+    if(!$api_res->has_error){
+        $c->req->session->{loggin} = 1;
+        $c->req->session->{member_hash} = $api_res->stash->{member_hash};
+        $c->redirect('/');
+    }
+    else {
+        # XXX 
+        $c->redirect('/');
+    }
 }
 
 

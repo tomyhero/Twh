@@ -2,6 +2,8 @@ package Twh::Context;
 use Mouse;
 use Twh::Request;
 use Twh::Response;
+use Twh::DB;
+use Log::Minimal;
 
 has 'req' => ( is => 'rw',lazy_build => 1);
 has 'res' => ( is => 'rw',lazy_build => 1);
@@ -11,6 +13,7 @@ has 'view' => ( is => 'rw');
 has 'stash' => ( is => 'rw' , default => sub{ +{} });
 has 'template' => ( is => 'rw');
 has 'finished' => ( is => 'rw', default => 0 );
+has 'db' => ( is => 'rw');
 
 my $APIS ;
 
@@ -30,9 +33,9 @@ BEGIN {
 }
 
 sub api {
-    my $self= shift;
+    my $c = shift;
     my $moniker = shift;
-    return $APIS->{$moniker}->new();
+    return $APIS->{$moniker}->new( { db => $c->db } );
 }
 sub _build_req {
     my $c = shift;
@@ -74,6 +77,28 @@ sub redirect {
     $c->finished(1);
 }
 
+sub PREPARE {
+    my $c = shift;
+    my $db = Twh::DB->new();
+    # XXX error handle.
+    $db->connect();
+    $c->db($db);
+}
+sub FINALIZE {
+    my $c = shift;
+    $c->db->disconnect();
+}
+
+sub member {
+    my $c = shift;
+    if($c->req->session->{loggin} && $c->req->session->{member_hash} ){
+        return $c->req->session->{member_hash};
+    }
+    else {
+        return;
+    }
+
+}
 __PACKAGE__->meta->make_immutable();
 
 no Mouse;

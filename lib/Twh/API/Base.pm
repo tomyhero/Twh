@@ -3,6 +3,12 @@ use Mouse;
 use Twh::Validator;
 use Log::Minimal;
 use Twh::API::Result;
+with 'Twh::Role::Config';
+
+has 'db' => (
+    is => 'rw',
+    required => 1,
+);
 
 sub profiles {
     my $class = shift;

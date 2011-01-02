@@ -4,7 +4,6 @@ use Twh::Twitter;
 use Twh::Utils;
 use Log::Minimal;
 extends 'Twh::API::Base';
-with 'Twh::Role::Config';
 
 sub profiles {
     +{
@@ -58,8 +57,18 @@ sub auth {
         $twitter->request_token_secret($opts->{request_token_secret} );
         my($access_token, $access_token_secret,$user_id, $screen_name) = $twitter->request_access_token(verifier => $verifier);
 
+        # * iconをとっておく。
+        $twitter->access_token( $access_token );
+        $twitter->access_token_secret( $access_token_secret );
+        my $user = $twitter->show_user($screen_name);
 
-
+        my $member_hash = $self->db->authorize({
+            screen_name => $screen_name,
+            access_token => $access_token,
+            access_token_secret => $access_token_secret,
+            icon_url => $user->{profile_image_url},
+        });
+        $stash->{member_hash} = $member_hash;
     }
 
      return $self->create_result_set( { v_res => $v_res , stash => $stash } );
