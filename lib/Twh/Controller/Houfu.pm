@@ -67,7 +67,7 @@ sub add {
         my $data = $c->req->as_fdat;
         $data->{houfu_code} = $houfu_code;
         $data->{screen_name} = $c->member->{screen_name};
-        my $api_res = $c->api('Houfu')->add($data);
+        my $api_res = $c->api('Houfu')->add($data, $c->member,$c->req->base);
 
         if($api_res->has_error){
             return $c->handle_error($api_res->v_res->errors);
