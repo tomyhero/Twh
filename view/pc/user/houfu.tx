@@ -1,4 +1,15 @@
-[% INCLUDE 'header.inc' %]
+[% INCLUDE 'header.inc' WITH 
+    breadcrumb = [
+        {
+            url => '/user/' _ user_hash.screen_name _ '/',
+            label => user_hash.screen_name 
+        },
+        {
+            label => houfu_hash.houfu_code
+        },
+    ]
+
+%]
 
 
 <img src="[% user_hash.icon_url %]" />

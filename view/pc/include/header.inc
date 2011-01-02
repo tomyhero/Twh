@@ -13,5 +13,18 @@
     <a href="/auth/login/">login</a>
 [% END %]
 </div>
+
+<div>
+    <ul id="breadcrumb">
+        <li><a href="/" title="Home"><img src="/images/home.png" alt="Home" class="home" /></a></li>
+        [% FOREACH bread IN breadcrumb %]
+            [% IF bread.url %]
+            <li><a href="[% bread.url %]" title="[% bread.label %]">[% bread.label %]</a></li>
+            [% ELSE %]
+            <li>[% bread.label %]</li>
+            [% END %]
+        [% END %]
+    </ul>
+</div>
 </div>
 <div id="main">
