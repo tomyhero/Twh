@@ -1,4 +1,5 @@
 [% INCLUDE 'header.inc' WITH 
+    title = user_hash.screen_name _ 'さんの抱負',
     breadcrumb = [
         {
             label => user_hash.screen_name 
@@ -6,17 +7,21 @@
     ]
 %]
 
+<div class="box">
+<h3>[% user_hash.screen_name %]さんの抱負一覧</h3>
 <table>
 [% FOREACH item IN houfu_items %]
 <tr>
 <td><img src="[% user_hash.icon_url %]"></td><td><div>[% item.body %]</div></td>
 <td>
 [% view_url = c.req.base _ "user/" _ user_hash.screen_name _ "/" _ item.houfu_code _ "/" %]
-<a href="http://twitter.com/share" data-url="[% view_url %]" class="twitter-share-button" data-count="horizontal" data-via="[% item.screen_name %]">応援なう</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-<a href="[% view_url %]">詳細</a>
+<a href="http://twitter.com/share" data-url="[% view_url %]" class="twitter-share-button" data-count="horizontal" data-via="[% item.screen_name %]">応援なう</a>
+<br /><a href="[% view_url %]">詳しく</a>
 </td>
 </tr>
 [% END %]
 </table>
+</div>
 
+<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 [% INCLUDE 'footer.inc' %]

@@ -1,18 +1,20 @@
 <html>
 <head>
-<title>ほうふなう</title>
-<link rel="stylesheet" type="text/css" href="/css/default.css"  />
+<title>[% title || '抱負なう' %]</title>
 <link rel="stylesheet" type="text/css" href="/wiki/css/cpan-like.css"  />
+<link rel="stylesheet" type="text/css" href="/css/default.css"  />
 </head>
 <body>
 <div id="header">
-<h1>ほうふなう</h1>
+<div id="logo">
+抱負なう <span style="font-size:12px;">- みんなの抱負で日本をもりあげよう - </span>
 <div id="login-status">
 [% IF c.member %]
-    [% member.screen_name %]  <a href="/auth/logout/">logout</a>
+    [% c.member.screen_name %]( <a href="/auth/logout/"><span style="font-size:12px">ログアウト</span></a> )
 [% ELSE %]
-    <a href="/auth/login/">login</a>
+    <a href="/auth/login/">ログイン</a>
 [% END %]
+</div>
 </div>
 
 <div>
@@ -28,4 +30,5 @@
     </ul>
 </div>
 </div>
+<div id="wrap">
 <div id="main">

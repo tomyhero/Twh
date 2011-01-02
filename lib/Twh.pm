@@ -1,6 +1,7 @@
 package Twh;
 use strict;
 use warnings;
+our $VERSION = '0.01';
 use Twh::Home;
 use Twh::Utils;
 use Twh::Config;

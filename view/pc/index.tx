@@ -1,6 +1,6 @@
 [% INCLUDE 'header.inc' %]
-<div id="cuurent">
-<h2>[% c.now.year %]年がんばるお</h2>
+<div id="current">
+<h2>[% c.now.year %]年の抱負をつぶやく</h2>
 [% IF c.member %]
 <div>    
 [% member_houfu =  c.member_houfu(c.now.year) %]
@@ -8,7 +8,7 @@
     <form method="post" action="/houfu/[% c.now.year %]/edit/">
     <table>
     <tr><td>
-    <img src="[% c.member.icon_url %]">
+    <img src="[% c.member.icon_url %]" class="icon">
     </td>
     <td>
         <textarea name="body" cols="80">[% member_houfu.body %]</textarea> 
@@ -25,7 +25,7 @@
     <form method="post" action="/houfu/[% c.now.year %]/add/">
     <table>
     <tr><td>
-    <img src="[% c.member.icon_url %]">
+    <img src="[% c.member.icon_url %]" class="icon">
     </td>
     <td>
         <textarea name="body" cols="80"></textarea> 
@@ -42,15 +42,12 @@
 [% END %]
 </div>
 [% ELSE %]
-    <div>
-        <h3>ほうふなうとは</h3>
-        <p>
-           みんなの抱負をみたり、ほうふをつぶやいてわすれないように残しておくさーびすです
-        </p>
+    <div style="padding:10px;padding-right:50px;padding-left:50px;">
+        <p>抱負なうとはみんなの抱負をみたり、抱負をつぶやいてわすれないように残しておくサービスです。みんなしあわせになれー</p>
     </div>
     <table>
     <tr><td>
-    <img src="https://s3.amazonaws.com/twitter_production/a/1292975674/images/default_profile_4_reasonably_small.png">
+    <img width="48" src="https://s3.amazonaws.com/twitter_production/a/1292975674/images/default_profile_4_reasonably_small.png">
     </td>
     <td>
         <textarea name="body" cols="80"></textarea> 
@@ -65,19 +62,22 @@
 [% END %]
 </div>
 
+<div class="box">
 <h3>最近登録された抱負</h3>
 <table>
 [% FOREACH recent IN recents %]
 <tr>
-<td><img src="[% recent.user_hash.icon_url %]"></td><td><div>[% recent.body %]</div></td>
+<td><a href="/user/[% recent.screen_name %]/"><img src="[% recent.user_hash.icon_url %]" class="icon"></a></td><td><div>[% recent.body %]</div></td>
 <td>
 [% view_url = c.req.base _ "user/" _ recent.user_hash.screen_name _ "/" _ recent.houfu_code _ "/" %]
-<a href="http://twitter.com/share" data-url="[% view_url %]" class="twitter-share-button" data-count="horizontal" data-via="[% recent.screen_name %]">応援なう</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-<a href="[% view_url %]">詳細</a>
+<a href="http://twitter.com/share" data-url="[% view_url %]" class="twitter-share-button" data-count="horizontal" data-via="[% recent.screen_name %]">応援なう</a>
+<br /><a href="[% view_url %]">詳しく</a>
 </td>
 </tr>
 [% END %]
 </table>
-
+<br />
+<br />
+</div>
+<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 [% INCLUDE 'footer.inc' %]
-

@@ -1,4 +1,5 @@
 [% INCLUDE 'header.inc' WITH 
+    title = user_hash.screen_name _ 'さんの'  _ houfu_hash.houfu_code _ '年の抱負',
     breadcrumb = [
         {
             url => '/user/' _ user_hash.screen_name _ '/',
@@ -12,26 +13,32 @@
 %]
 
 
-<img src="[% user_hash.icon_url %]" />
-<a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="[% user_hash.screen_name %]">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+<div id="current">
+<h2>[% houfu_hash.houfu_code%]年の抱負</h2>
+<table width="100%">
+<tr>
+<td><img src="[% user_hash.icon_url %]" class="icon" /></td>
+<td><a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="[% user_hash.screen_name %]">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></td>
+<td width="100%" style="background-color:#fff;">[% houfu_hash.body %]</td>
+</tr>
+</table>
 
+</div>
 
-[% houfu_hash.houfu_code %]年の抱負
-
-[% houfu_hash.body %]
+[% IF c.member && c.member.screen_name == user_hash.screen_name %]
+<div class="box" style="text-align:right;">
+    [% IF houfu_hash.wiki_body %]
+        <a href="/houfu/[% houfu_hash.houfu_code %]/edit_wiki/">まとめを編集</a>
+    [% ELSE %]
+        <a href="/houfu/[% houfu_hash.houfu_code %]/edit_wiki/">さらに詳しくまとめよう！</a>
+    [% END %]
+</div>
+[% END %]
 
 [% IF houfu_hash.wiki_body %]
-    <h3>まとめ情報</h3>
     [% houfu_hash.wiki_body | wiki %]
 [% END %]
 
-[% IF c.member && c.member.screen_name == user_hash.screen_name %]
-[% IF houfu_hash.wiki_body %]
-<a href="/houfu/[% houfu_hash.houfu_code %]/edit_wiki/">まとめを編集</a>
-[% ELSE %]
-<a href="/houfu/[% houfu_hash.houfu_code %]/edit_wiki/">さらに詳しくまとめよう！</a>
-[% END %]
-[% END %]
 
 
 

@@ -1,5 +1,6 @@
 </div>
-<div id="side" style="height:500px">
+<div id="side">
+<div class="box">
 <div id="houfu-timeline"></div>
 <script src="http://widgets.twimg.com/j/2/widget.js"></script>
 <script>
@@ -9,7 +10,7 @@ id: 'houfu-timeline',
 type: 'search',
 search: '#houfu',
 interval: 2000,
-subject: '最近の抱負',
+subject: '抱負つぶやき',
 width: 300,
 height: 400,
 
@@ -28,9 +29,18 @@ height: 400,
 }).render().start();
 </script>
 </div>
+<div class="box">
+<h3>lazy-people.org</h3>
+<a href="http://lazy-people.org/"><img src="http://lazy-people.org/htdocs/images/lazysan.png"></a>
+</div>
+</div>
 <div style="clear: both;"></div>
 <div id="footer">
-http://houfu.lazy-people.org/ ~ 
-</div>
+<ul class="support">
+<li class="template"><a href="http://github.com/tomyhero/Twh">Twh version 0.01</a></li>
+</ul>
+<address>Copyright &copy; <a href="http://lazy-people.org/">lazy-people.org</a> All Rights Reserved.</address>
+</div><!-- END OF footer -->
+<div><!-- END OF wrap -->
 </body>
 </html>

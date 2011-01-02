@@ -5,17 +5,29 @@
             label => user_hash.screen_name 
         },
         {
-            label => houfu_hash.houfu_code _ '年の抱負'
+            label => houfu_hash.houfu_code _ '年の抱負',
+            url => '/user/' _ user_hash.screen_name _ '/' _ houfu_hash.houfu_code _ '/',
         },
+        {
+            label => 'まとめ編集',
+        }
     ]
 
 %]
 
+<div class="box">
+<h3>まとめよう</h3>
+<p>
+抱負を詳細にまとめることができます。
+</p>
+
+<a href="http://wiki.livedoor.jp/tag_guide/" target="_blank">livedoor wiki記法が利用できます</a>
 <form method="post" action="/houfu/[% houfu_hash.houfu_code %]/edit_wiki/">
-<textarea name="wiki_body" rows="20" cols="100">[% houfu_hash.wiki_body %]</textarea>
-<input type="submit" />
+<textarea name="wiki_body" rows="20" cols="70">[% houfu_hash.wiki_body %]</textarea>
+<br />
+<input type="submit" value="更新" />
+
 </form>
-
-
+</div>
 
 [% INCLUDE 'footer.inc' %]

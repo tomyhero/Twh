@@ -1,19 +1,72 @@
+
+html,body,div,h1,h2,h3,h4,h5,h6,p,blockquote,pre,table,th,tr,td,ul,ol,li,dl,dt,dd,form,fieldset,legend,hr,span,a,img,strong,em,ins,del,cite,abbr,acronym,sup,sub,dfn,code,var,samp,kbd {
+margin: 0;
+padding: 0;
+}
+
+body{
+    background-color : #ccc;
+}
+* {
+    word-break:break-all;
+}
+img {
+border:0px;
+}
 #header {
-
+    background:black;
+    color :#ccc;
 }
-#header h1 {
-    font-size : 20px;
-}
-
-#main {
-    width : 700px;
-    float:left;
+#logo{
     
 }
-#side {
+#login-status {
+    margin-right:10px;
+    float:right;
+}
+#login-status a:link { color : #fff }
+#login-status a:visited { color : #fff }
+#login-status a:active { color : #fff }
+#login-stauts a:hover { color : #fff }
+
+#wrap {
+}
+#main {
+    width:800px;
     float:left;
 }
-#footer {
+#side {
+    margin:5px;
+    padding:5px;
+    float:left;
+    background-color:#fff;
+}
+div#footer {
+    padding: 1px 0 1em;
+    background-color:#000;
+}
+
+div#footer a {
+    color: #aaa;
+    text-decoration: none;
+}
+div#footer a:hover {
+    color: #fff;
+}
+div#footer ul {
+    margin: 0.7em 0;
+    text-align: center;
+    color: #ddd;
+    font-size: 85%;
+}
+div#footer ul li {
+    margin-left: 5px;
+    display: inline;
+}
+div#footer address {
+    text-align: center;
+    font-style: normal;
+    color: #eee;
 }
 
 
@@ -57,5 +110,42 @@
 #breadcrumb a:hover
 {
     color:#35acc5;
+}
+
+
+#current {
+margin:5px;
+padding:5px;
+background:#EBFCCE;
+border-color:#8CA85A;
+border-width:1px;
+border-style:solid;
+}
+.icon {
+    width:48px;
+    margin:1px;
+}
+
+.box {
+    margin:5px;
+    padding:5px;
+    background:#fff;
+}
+.box h3 {
+    margin:5px;
+    border-bottom-color:#8CA85A;
+    border-bottom-width:1px;
+    border-bottom-style:solid;
+}
+.box table {
+    margin:10px;
+}
+div.user-area{
+    margin:5px;
+    padding: 15px;
+    background:#fff;
+    border-bottom-color:#8CA85A;
+    border-bottom-width:1px;
+    border-bottom-style:solid;
 }
 
