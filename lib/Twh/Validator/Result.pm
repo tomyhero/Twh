@@ -4,6 +4,16 @@ use strict;
 use warnings;
 use parent qw(FormValidator::LazyWay::Result);
 
+sub errors {
+    my $self = shift;
+    my @e = ();
+    my $error_message = $self->{error_message} || {};
+    for my $key (keys %$error_message){
+        push @e , $error_message->{$key};
+    }
+    return \@e;
+}
+
 sub dump_error {
     my $self = shift;
     my $e = {};

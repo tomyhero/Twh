@@ -10,6 +10,10 @@ my $router = router {
         ->connect('logout/', {action => 'logout' })
         ->connect('login/', {action => 'login' })
         ->connect('callback/', {action => 'callback' });
+
+
+    submapper ('/houfu/' , { controller => 'Houfu' } )
+        ->connect('{houfu_code:[0-9a-zA-Z_-]+}/add/', {action => 'add' });
 };
 
 $router;

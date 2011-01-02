@@ -2,6 +2,7 @@ package Twh::Context;
 use Mouse;
 use Twh::Request;
 use Twh::Response;
+use Twh::Utils;
 use Twh::DB;
 use Log::Minimal;
 
@@ -14,6 +15,11 @@ has 'stash' => ( is => 'rw' , default => sub{ +{} });
 has 'template' => ( is => 'rw');
 has 'finished' => ( is => 'rw', default => 0 );
 has 'db' => ( is => 'rw');
+has 'now' => (is => 'rw',lazy_build => 1);
+
+sub _build_now{
+    Twh::Utils::now(); 
+}
 
 my $APIS ;
 
@@ -63,6 +69,12 @@ sub render {
     return $res;
 }
 
+sub handle_error {
+    my $c = shift;
+    my $errors = shift;
+    $c->stash->{errors} = $errors;
+    $c->template('error.tx');
+}
 sub handle_not_found {
     my $c = shift;
     $c->res->code(404);

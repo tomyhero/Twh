@@ -1,7 +1,25 @@
 [% INCLUDE 'header.inc' %]
 
 [% IF c.member %]
-    [% c.member.screen_name %]
+<div>    
+    <b>[% c.now.year %]年の抱負をつぶやく</b><br />
+    <form method="post" action="/houfu/[% c.now.year %]/add/">
+    <table>
+    <tr><td>
+    <img src="[% c.member.icon_url %]">
+    </td>
+    <td>
+        <textarea name="body" cols="80"></textarea> 
+    </td>
+    </tr>
+    <tr>
+    <td colspan="2" align="right">
+        <input type="submit" value="つぶやく">
+    </td>
+    </tr>
+    </table>
+    </form>
+</div>
 [% ELSE %]
     <a href="/auth/login/">login</a>
 [% END %]

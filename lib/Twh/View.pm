@@ -2,6 +2,7 @@ package Twh::View;
 use Mouse;
 use parent('Class::Data::Inheritable');
 use Text::Xslate;
+use Encode;
 
 __PACKAGE__->mk_classdata('path');
 
@@ -31,6 +32,7 @@ sub render {
         c => $c,
     );
     my $output = $self->tx->render( $template, \%vars );
+    $output = encode('utf8',$output);
     return $output;
 }
 

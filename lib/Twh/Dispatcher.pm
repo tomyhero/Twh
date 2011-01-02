@@ -30,7 +30,7 @@ sub match {
             return;
         }
         $c->PREPARE();
-        $controller->$action( $c );
+        $controller->$action( $c , $res );
         $self->set_template( $c, $res );
         my $res = $c->render();
         $c->FINALIZE();

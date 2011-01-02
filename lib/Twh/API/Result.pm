@@ -2,16 +2,16 @@ package Twh::API::Result;
 use Mouse;
 
 has 'stash' =>( is => 'rw');
-has 'errors' =>( is => 'rw');
+has 'v_res' => (is => 'rw');
 
 sub has_error {
     my $self =shift;
-    if($self->errors){
-        return 1;
-    }
-    else {
+     if(my $v_res = $self->v_res){
+        return $v_res->has_error || 0 ; 
+     }
+     else {
         return 0;
-    }
+     }
 
 }
 

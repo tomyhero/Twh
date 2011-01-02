@@ -38,3 +38,20 @@ setting:
             - String#length:
                 max: 255
                 min: 1
+        houfu_code:
+            rule :
+            - String#ascii 
+            - String#length:
+                max: 10
+                min: 1
+        screen_name:
+            rule :
+            - String#ascii 
+            - String#length:
+                max: 30
+                min: 1
+        body:
+            rule :
+            - String#length:
+                max: 130
+                min: 1

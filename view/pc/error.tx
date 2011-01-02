@@ -1,0 +1,13 @@
+[% INCLUDE 'header.inc' %]
+
+エラーなう
+
+[% FOREACH e IN errors %]
+[% e %]
+[% END %]
+
+<a href="javascript:history.back()">戻る</a>
+
+
+[% INCLUDE 'footer.inc' %]
+
