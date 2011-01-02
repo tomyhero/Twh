@@ -80,6 +80,7 @@ sub handle_not_found {
     $c->res->code(404);
     $c->res->body('not found');;
     $c->res->finalize();
+    $c->finished(1);
 }
 
 sub redirect {
@@ -110,6 +111,13 @@ sub member {
         return;
     }
 
+}
+sub append_stash {
+    my $c = shift;
+    my $hash = shift;
+    for my $key (keys %$hash){
+         $c->stash->{$key} = $hash->{$key} ; 
+    }
 }
 __PACKAGE__->meta->make_immutable();
 

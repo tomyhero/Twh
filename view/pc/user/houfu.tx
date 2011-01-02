@@ -1,0 +1,13 @@
+[% INCLUDE 'header.inc' %]
+
+
+<img src="[% user_hash.icon_url %]" />
+<a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="[% user_hash.screen_name %]">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+
+
+[% houfu_hash.houfu_code %]年の抱負
+
+[% houfu_hash.body %]
+
+
+[% INCLUDE 'footer.inc' %]

@@ -25,5 +25,17 @@
 [% END %]
 
 
+<h3>最近登録された抱負</h3>
+<table>
+[% FOREACH recent IN recents %]
+<tr>
+<td><img src="[% recent.user_hash.icon_url %]"></td><td><div>[% recent.body %]</div></td>
+<td><a href="/user/[% recent.user_hash.screen_name %]/[% recent.houfu_code %]/">詳細</a>
+</tr>
+[% END %]
+</table>
+
+
+
 [% INCLUDE 'footer.inc' %]
 

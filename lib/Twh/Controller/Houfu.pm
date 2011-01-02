@@ -17,6 +17,8 @@ sub add {
             return $c->handle_error($api_res->v_res->errors);
         }
 
+        my $v = $api_res->v_res->valid;
+        $c->redirect(sprintf("/user/%s/%s/", $v->{screen_name}, $v->{houfu_code} ));
 
 
     }

@@ -33,6 +33,41 @@ sub authorize {
     return $self->lookup_member($args->{screen_name});
 }
 
+sub add_houfu {
+    my $self = shift;
+    my $args = shift;
+    my $sql = "INSERT INTO houfu ( screen_name, houfu_code,body,updated_at,created_at) VALUES (?,?,?,NOW(),NOW())";
+    my $sth = $self->dbh->prepare($sql);
+    $sth->execute($args->{screen_name},$args->{houfu_code}, $args->{body});
+    $sth->finish;
+}
+
+
+sub houfu_recents {
+    my $self = shift;
+    my $sql = "SELECT * FROM houfu ORDER BY updated_at DESC LIMIT 10"; 
+    my $sth = $self->dbh->prepare($sql);
+    $sth->execute();
+    my @recents = ();
+    for(my $houfu_hash = $sth->fetchrow_hashref){
+        my $user_hash = $self->lookup_member( $houfu_hash->{screen_name} );
+        $houfu_hash->{user_hash} = $user_hash;
+        push @recents, $houfu_hash;
+    }
+    $sth->finish;
+    return \@recents;
+}
+sub lookup_houfu {
+    my $self = shift;
+    my $screen_name = shift;
+    my $houfu_code = shift;
+    my $sql = "SELECT * FROM houfu WHERE screen_name = ? AND houfu_code = ?";
+    my $sth = $self->dbh->prepare($sql);
+    $sth->execute($screen_name,$houfu_code);
+    my $houfu_hash = $sth->fetchrow_hashref;
+    $sth->finish;
+    return $houfu_hash;
+}
 
 sub lookup_member {
     my $self = shift;

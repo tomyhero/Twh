@@ -19,9 +19,15 @@ sub add {
     my $v_res = $self->validate( $args );
     my $stash = {};
     if(!$v_res->has_error){
-
+        my $v = $v_res->valid;
+        $self->db->add_houfu( $v );
     }
     return $self->create_result_set( { v_res => $v_res , stash => $stash } );
+}
+
+sub x_recents {
+    my $self = shift;
+    return $self->db->houfu_recents();
 }
 
 __PACKAGE__->meta->make_immutable();

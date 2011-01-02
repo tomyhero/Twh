@@ -5,6 +5,7 @@ extends 'Twh::Controller::Base';
 
 sub index {
     my ( $self, $c ) = @_;
+    $c->stash->{recents} = $c->api('Houfu')->x_recents();
 }
 
 

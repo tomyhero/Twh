@@ -14,6 +14,11 @@ my $router = router {
 
     submapper ('/houfu/' , { controller => 'Houfu' } )
         ->connect('{houfu_code:[0-9a-zA-Z_-]+}/add/', {action => 'add' });
+
+
+    submapper ('/user/' , { controller => 'User' } )
+        ->connect('{screen_name:[0-9a-zA-Z_]+}/', {action => 'view' })
+        ->connect('{screen_name:[0-9a-zA-Z_]+}/{houfu_code:[0-9a-zA-Z_-]+}/', {action => 'houfu' });
 };
 
 $router;
