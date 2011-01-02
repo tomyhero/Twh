@@ -5,6 +5,13 @@ extends 'Twh::Controller::Base';
 sub view {
     my ( $self, $c ,$args ) = @_;
     $c->template('user/view.tx');
+    my $api_res = $c->api('User')->lookup( $args );
+    if($api_res->has_error){
+        return $c->handle_not_found();
+    }
+    else {
+        $c->append_stash( $api_res->stash );
+    }
 
 }
 

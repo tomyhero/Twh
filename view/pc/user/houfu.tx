@@ -5,7 +5,7 @@
             label => user_hash.screen_name 
         },
         {
-            label => houfu_hash.houfu_code
+            label => houfu_hash.houfu_code _ '年の抱負'
         },
     ]
 

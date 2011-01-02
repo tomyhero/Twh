@@ -1,1 +1,11 @@
-view.tx
+[% INCLUDE 'header.inc' WITH 
+    breadcrumb = [
+        {
+            label => user_hash.screen_name 
+        },
+    ]
+
+%]
+
+
+[% INCLUDE 'footer.inc' %]
