@@ -78,6 +78,20 @@ sub lookup_houfu {
     return $houfu_hash;
 }
 
+sub houfu_items {
+    my $self = shift;
+    my $screen_name = shift;
+    my $sql = "SELECT * FROM houfu WHERE screen_name = ? ORDER BY updated_at DESC "; 
+    my $sth = $self->dbh->prepare($sql);
+    $sth->execute( $screen_name );
+    my @items= ();
+    while(my $houfu_hash = $sth->fetchrow_hashref){
+        push @items, $houfu_hash;
+    }
+    $sth->finish;
+    return \@items;
+}
+
 sub lookup_member {
     my $self = shift;
     my $screen_name = shift;

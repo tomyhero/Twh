@@ -22,7 +22,9 @@ sub lookup {
     if(!$v_res->has_error){
         my $v = $v_res->valid;
         my $user_hash  = $self->db->lookup_member( $v->{screen_name} );
+        my $houfu_items = $self->db->houfu_items( $v->{screen_name} );
         $stash->{user_hash} = $user_hash;
+        $stash->{houfu_items} = $houfu_items;
     }
      return $self->create_result_set( { v_res => $v_res , stash => $stash } );
 }
