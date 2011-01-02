@@ -30,6 +30,8 @@ my $config = Twh::Config->instance();
 my $cache = Cache::FastMmap->new( expire_time => '7d' , share_file =>  $config->get('session','share_file')  );
 my $home = Twh::Home->get();
 builder {
+    enable_if { $_[0]->{REMOTE_ADDR} eq '127.0.0.1' }
+            "Plack::Middleware::ReverseProxy";
     enable 'Static',
         path => qr{^/(images|js|css|wiki)/}, root => $home->subdir('htdocs');
 
