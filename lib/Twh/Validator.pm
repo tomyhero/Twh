@@ -55,3 +55,8 @@ setting:
             - String#length:
                 max: 130
                 min: 1
+        wiki_body:
+            rule :
+            - String#length:
+                max: 1000
+                min: 1

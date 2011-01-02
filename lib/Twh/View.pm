@@ -3,6 +3,7 @@ use Mouse;
 use parent('Class::Data::Inheritable');
 use Text::Xslate;
 use Encode;
+use Twh::View::Macro;
 
 __PACKAGE__->mk_classdata('path');
 
@@ -17,7 +18,7 @@ sub BUILD {
 sub create_tx {
     my $self = shift;
     my $tx = Text::Xslate->new( 
-         module => [ 'Text::Xslate::Bridge::TT2Like'],
+        module => [ 'Text::Xslate::Bridge::TT2Like','Twh::View::Macro'],
         syntax => 'TTerse' ,
         path => $self->path,
     );

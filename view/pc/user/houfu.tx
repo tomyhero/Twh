@@ -20,5 +20,19 @@
 
 [% houfu_hash.body %]
 
+[% IF houfu_hash.wiki_body %]
+    <h3>まとめ情報</h3>
+    [% houfu_hash.wiki_body | wiki %]
+[% END %]
+
+[% IF c.member && c.member.screen_name == user_hash.screen_name %]
+[% IF houfu_hash.wiki_body %]
+<a href="/houfu/[% houfu_hash.houfu_code %]/edit_wiki/">まとめを編集</a>
+[% ELSE %]
+<a href="/houfu/[% houfu_hash.houfu_code %]/edit_wiki/">さらに詳しくまとめよう！</a>
+[% END %]
+[% END %]
+
+
 
 [% INCLUDE 'footer.inc' %]

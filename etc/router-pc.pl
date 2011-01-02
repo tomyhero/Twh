@@ -14,7 +14,8 @@ my $router = router {
 
     submapper ('/houfu/' , { controller => 'Houfu' } )
         ->connect('{houfu_code:[0-9a-zA-Z_-]+}/add/', {action => 'add' })
-        ->connect('{houfu_code:[0-9a-zA-Z_-]+}/edit/', {action => 'edit' });
+        ->connect('{houfu_code:[0-9a-zA-Z_-]+}/edit/', {action => 'edit' })
+        ->connect('{houfu_code:[0-9a-zA-Z_-]+}/edit_wiki/', {action => 'edit_wiki' });
 
 
     submapper ('/user/' , { controller => 'User' } )

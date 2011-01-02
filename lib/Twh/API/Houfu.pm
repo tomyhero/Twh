@@ -12,9 +12,25 @@ sub profiles {
         },
         edit_body => {
             required => [qw/houfu_code screen_name body/],
+        },
+        edit_wiki_body => {
+            required => [qw/houfu_code screen_name wiki_body/],
         }
     } 
 }
+
+sub edit_wiki_body {
+    my $self = shift;
+    my $args = shift;
+    my $v_res = $self->validate( $args );
+    my $stash = {};
+    if(!$v_res->has_error){
+        my $v = $v_res->valid;
+        $self->db->edit_houfu_wiki_body( $v );
+    }
+    return $self->create_result_set( { v_res => $v_res , stash => $stash } );
+}
+
 
 sub edit_body {
     my $self = shift;

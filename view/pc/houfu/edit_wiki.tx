@@ -1,0 +1,21 @@
+[% INCLUDE 'header.inc' WITH 
+    breadcrumb = [
+        {
+            url => '/user/' _ user_hash.screen_name _ '/',
+            label => user_hash.screen_name 
+        },
+        {
+            label => houfu_hash.houfu_code _ '年の抱負'
+        },
+    ]
+
+%]
+
+<form method="post" action="/houfu/[% houfu_hash.houfu_code %]/edit_wiki/">
+<textarea name="wiki_body" rows="20" cols="100">[% houfu_hash.wiki_body %]</textarea>
+<input type="submit" />
+</form>
+
+
+
+[% INCLUDE 'footer.inc' %]

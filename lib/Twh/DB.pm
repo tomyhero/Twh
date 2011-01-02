@@ -51,6 +51,15 @@ sub edit_houfu_body {
     $sth->finish;
 }
 
+sub edit_houfu_wiki_body {
+    my $self = shift;
+    my $args = shift;
+    my $sql = "UPDATE houfu SET wiki_body = ?,updated_at = NOW() WHERE screen_name = ? AND houfu_code = ?";
+    my $sth = $self->dbh->prepare($sql);
+    $sth->execute($args->{wiki_body},$args->{screen_name},$args->{houfu_code});
+    $sth->finish;
+}
+
 
 sub houfu_recents {
     my $self = shift;

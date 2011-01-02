@@ -28,7 +28,7 @@ height: 400,
 }).render().start();
 </script>
 </div>
-<div class="clearfix"></div>
+<div style="clear: both;"></div>
 <div id="footer">
 http://houfu.lazy-people.org/ ~ 
 </div>

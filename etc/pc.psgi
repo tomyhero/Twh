@@ -27,7 +27,7 @@ my $cache = Cache::FastMmap->new( expire_time => '7d' , share_file => '/tmp/twh'
 my $home = Twh::Home->get();
 builder {
     enable 'Static',
-        path => qr{^/(images|js|css)/}, root => $home->subdir('htdocs');
+        path => qr{^/(images|js|css|wiki)/}, root => $home->subdir('htdocs');
 
     enable 'Session', 
         state => Plack::Session::State::Cookie->new( session_key => 'twh_session' ),

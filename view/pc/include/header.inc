@@ -2,6 +2,7 @@
 <head>
 <title>ほうふなう</title>
 <link rel="stylesheet" type="text/css" href="/css/default.css"  />
+<link rel="stylesheet" type="text/css" href="/wiki/css/cpan-like.css"  />
 </head>
 <body>
 <div id="header">
