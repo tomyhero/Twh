@@ -14,5 +14,6 @@ create table houfu (
     body varchar(140) NOT NULL,
     wiki_body text ,
     updated_at DATETIME NOT NULL,
-    created_at DATETIME NOT NULL
+    created_at DATETIME NOT NULL,
+    PRIMARY KEY(screen_name,houfu_code)
 ) ENGINE=InnoDB DEFAULT CHARACTER SET = 'utf8';

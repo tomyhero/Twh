@@ -42,6 +42,15 @@ sub add_houfu {
     $sth->finish;
 }
 
+sub edit_houfu_body {
+    my $self = shift;
+    my $args = shift;
+    my $sql = "UPDATE houfu SET body = ?,updated_at = NOW() WHERE screen_name = ? AND houfu_code = ?";
+    my $sth = $self->dbh->prepare($sql);
+    $sth->execute($args->{body},$args->{screen_name},$args->{houfu_code});
+    $sth->finish;
+}
+
 
 sub houfu_recents {
     my $self = shift;
@@ -49,7 +58,7 @@ sub houfu_recents {
     my $sth = $self->dbh->prepare($sql);
     $sth->execute();
     my @recents = ();
-    for(my $houfu_hash = $sth->fetchrow_hashref){
+    while(my $houfu_hash = $sth->fetchrow_hashref){
         my $user_hash = $self->lookup_member( $houfu_hash->{screen_name} );
         $houfu_hash->{user_hash} = $user_hash;
         push @recents, $houfu_hash;

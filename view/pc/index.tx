@@ -1,8 +1,27 @@
 [% INCLUDE 'header.inc' %]
-
+<div id="cuurent">
+<h2>[% c.now.year %]年がんばるお</h2>
 [% IF c.member %]
 <div>    
-    <b>[% c.now.year %]年の抱負をつぶやく</b><br />
+[% member_houfu =  c.member_houfu(c.now.year) %]
+[% IF member_houfu %]
+    <form method="post" action="/houfu/[% c.now.year %]/edit/">
+    <table>
+    <tr><td>
+    <img src="[% c.member.icon_url %]">
+    </td>
+    <td>
+        <textarea name="body" cols="80">[% member_houfu.body %]</textarea> 
+    </td>
+    </tr>
+    <tr>
+    <td colspan="2" align="right">
+        <input type="submit" value="抱負をこっそり変更する">
+    </td>
+    </tr>
+    </table>
+    </form>
+[% ELSE %]
     <form method="post" action="/houfu/[% c.now.year %]/add/">
     <table>
     <tr><td>
@@ -14,28 +33,51 @@
     </tr>
     <tr>
     <td colspan="2" align="right">
-        <input type="submit" value="つぶやく">
+        (ツイートされます)
+        <input type="submit" value="抱負をつぶやく">
     </td>
     </tr>
     </table>
     </form>
+[% END %]
 </div>
 [% ELSE %]
-    <a href="/auth/login/">login</a>
+    <div>
+        <h3>ほうふなうとは</h3>
+        <p>
+           みんなの抱負をみたり、ほうふをつぶやいてわすれないように残しておくさーびすです
+        </p>
+    </div>
+    <table>
+    <tr><td>
+    <img src="https://s3.amazonaws.com/twitter_production/a/1292975674/images/default_profile_4_reasonably_small.png">
+    </td>
+    <td>
+        <textarea name="body" cols="80"></textarea> 
+    </td>
+    </tr>
+    <tr>
+    <td colspan="2" align="right">
+        <a href="/auth/login/">抱負をつぶやくには認証が必要です</a>
+    </td>
+    </tr>
+    </table>
 [% END %]
-
+</div>
 
 <h3>最近登録された抱負</h3>
 <table>
 [% FOREACH recent IN recents %]
 <tr>
 <td><img src="[% recent.user_hash.icon_url %]"></td><td><div>[% recent.body %]</div></td>
-<td><a href="/user/[% recent.user_hash.screen_name %]/[% recent.houfu_code %]/">詳細</a>
+<td>
+[% view_url = c.req.base _ "user/" _ recent.user_hash.screen_name _ "/" _ recent.houfu_code _ "/" %]
+<a href="http://twitter.com/share" data-url="[% view_url %]" class="twitter-share-button" data-count="horizontal" data-via="[% recent.screen_name %]">応援なう</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+<a href="[% view_url %]">詳細</a>
+</td>
 </tr>
 [% END %]
 </table>
-
-
 
 [% INCLUDE 'footer.inc' %]
 

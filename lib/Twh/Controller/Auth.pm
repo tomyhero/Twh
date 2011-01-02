@@ -4,7 +4,8 @@ extends 'Twh::Controller::Base';
 
 sub logout {
     my ( $self, $c ) = @_;
-
+    $c->req->session->{loggin} = 0;
+    $c->redirect('/');
 }
 sub login {
     my ( $self, $c ) = @_;

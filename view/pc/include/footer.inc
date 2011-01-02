@@ -1,4 +1,5 @@
-
+</div>
+<div id="side" style="height:500px">
 <div id="houfu-timeline"></div>
 <script src="http://widgets.twimg.com/j/2/widget.js"></script>
 <script>
@@ -7,10 +8,10 @@ version: 2,
 id: 'houfu-timeline',
 type: 'search',
 search: '#houfu',
-interval: 1000,
+interval: 2000,
 subject: '最近の抱負',
-width: 500,
-height: 240,
+width: 300,
+height: 400,
 
   theme: {
     shell: {
@@ -26,5 +27,10 @@ height: 240,
 
 }).render().start();
 </script>
+</div>
+<div class="clearfix"></div>
+<div id="footer">
+http://houfu.lazy-people.org/ ~ 
+</div>
 </body>
 </html>

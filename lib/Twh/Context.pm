@@ -119,6 +119,13 @@ sub append_stash {
          $c->stash->{$key} = $hash->{$key} ; 
     }
 }
+
+# XXX じゃまくさいのでここに配備。
+sub member_houfu {
+    my $c = shift;
+    my $houfu_code = shift;
+    return $c->db->lookup_houfu( $c->member->{screen_name} , $houfu_code );
+}
 __PACKAGE__->meta->make_immutable();
 
 no Mouse;

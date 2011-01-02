@@ -1,0 +1,96 @@
+html,body,div,h1,h2,h3,h4,h5,h6,p,blockquote,pre,table,th,tr,td,ul,ol,li,dl,dt,dd,form,fieldset,legend,hr,span,a,img,strong,em,ins,del,cite,abbr,acronym,sup,sub,dfn,code,var,samp,kbd {
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    word-break:break-all;
+}
+
+address,caption,cite,code,dfn,em,strong,th,var,h1,h2,h3,h4,h5,h6 {
+    font-style: normal;
+    font-weight: normal;
+}
+
+div,dl,dt,dd,table,textarea,h1,h2,h3,h4,h5,h6 {
+    font-size: 100%;
+}
+
+h1,h2,h3,h4,h5,h6,div {
+    zoom:1;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+fieldset,img {
+    border:0;
+}
+
+img {
+    vertical-align: bottom;
+}
+
+ul {
+    list-style: none;
+}
+
+q:before,q:after {
+    content:'';
+}
+
+strong {
+    font-weight:bold;
+}
+
+/* common-style
+------------------------------------------------------------------------------------------------------------------------ */
+body {
+    font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','ＭＳ Ｐゴシック',Helvetica,sans-serif;
+    font-size:82%;
+}
+
+
+
+/* clear
+------------------------------------------------------------------------------------------------------------------------ */
+* html .clearfix {
+    zoom:1;
+}
+*+html .clearfix {
+    zoom:1;
+}
+
+/* modern brow */
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    height: 0;
+    visibility: hidden;
+}
+
+/* MacIE onry ¥*//*/
+.clearfix {
+    display: inline-table;
+}/* end */
+
+
+
+#header {
+}
+#header h1 {
+    font-size : 20px;
+}
+
+#main {
+    width : 700px;
+    float:left;
+    
+}
+#side {
+    float:left;
+}
+#footer {
+}

@@ -2,6 +2,12 @@ package Twh::Controller::User;
 use Mouse;
 extends 'Twh::Controller::Base';
 
+sub view {
+    my ( $self, $c ,$args ) = @_;
+    $c->template('user/view.tx');
+
+}
+
 sub houfu {
     my ( $self, $c ,$args ) = @_;
     $c->template('user/houfu.tx');

@@ -17,6 +17,7 @@ sub BUILD {
 sub create_tx {
     my $self = shift;
     my $tx = Text::Xslate->new( 
+         module => [ 'Text::Xslate::Bridge::TT2Like'],
         syntax => 'TTerse' ,
         path => $self->path,
     );
