@@ -13,7 +13,7 @@
 %]
 
 
-<div id="current"><h2><a href="/hoge/">[% houfu_hash.houfu_code%]年の抱負</a></h2>
+<div id="current"><h2>[% houfu_hash.houfu_code%]年の抱負</h2>
 <table width="100%">
 <tr>
 <td><a href="http://twitter.com/[% user_hash.screen_name %]/"><img src="[% user_hash.icon_url %]" class="icon" /></a></td>
