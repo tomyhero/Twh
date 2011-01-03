@@ -3,6 +3,7 @@ use Mouse;
 use Twh::Twitter;
 use Twh::Utils;
 use Log::Minimal;
+use utf8;
 extends 'Twh::API::Base';
 
 sub profiles {
@@ -59,7 +60,7 @@ sub add {
         $twitter->access_token( $member->{access_token} );
         $twitter->access_token_secret( $member->{access_token_secret} );
         my $url = Twh::Utils::short_url( sprintf('%suser/%s/%s/',$base_url,$v->{screen_name},$v->{houfu_code}) );
-        my $text = $v->{body} . ' #houfu ' .$url;
+        my $text = '抱負なう「' . $v->{body} . '」 #houfu ' .$url;
         $twitter->update( $text );    
     }
 
