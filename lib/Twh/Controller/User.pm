@@ -7,12 +7,12 @@ sub view {
     $c->template('user/view.tx');
     my $api_res = $c->api('User')->lookup( $args );
     if($api_res->has_error){
-        return $c->handle_not_found();
+        $c->stash->{args} = $args;
+        $c->template('user/view_notfound.tx');
     }
     else {
         $c->append_stash( $api_res->stash );
     }
-
 }
 
 sub houfu {

@@ -79,8 +79,9 @@ sub handle_not_found {
     my $c = shift;
     $c->res->code(404);
     $c->res->body('not found');;
-    $c->res->finalize();
+    my $res = $c->res->finalize();
     $c->finished(1);
+    return $res;
 }
 
 sub redirect {

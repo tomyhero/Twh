@@ -1,0 +1,19 @@
+[% INCLUDE 'header.inc' WITH 
+    title = args.screen_name _ 'さんの抱負',
+    breadcrumb = [
+        {
+            label => args.screen_name 
+        },
+    ]
+%]
+
+<div class="box">
+<h3>[% args.screen_name %]さんの抱負一覧</h3>
+<p>
+[% SET osusume = '@' _ args.screen_name _ 'さん抱負公開してみませんか。  ' _ c.req.base %]
+[% args.screen_name %]さんはまだ抱負をまだ公開していません。 <a href="http://twitter.com/?status=[% osusume | uri %]">おすすめしてみる</a>
+</p>
+</div>
+
+<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+[% INCLUDE 'footer.inc' %]

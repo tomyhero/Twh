@@ -21,7 +21,9 @@ sub lookup {
     my $stash = {};
     if(!$v_res->has_error){
         my $v = $v_res->valid;
-        my $user_hash  = $self->db->lookup_member( $v->{screen_name} );
+        my $user_hash  = $self->db->lookup_member( $v->{screen_name} )
+            or return $self->create_error_set($v_res,'not_found');
+
         my $houfu_items = $self->db->houfu_items( $v->{screen_name} );
         $stash->{user_hash} = $user_hash;
         $stash->{houfu_items} = $houfu_items;
@@ -35,8 +37,10 @@ sub lookup_houfu {
     my $stash = {};
     if(!$v_res->has_error){
         my $v = $v_res->valid;
-        my $user_hash  = $self->db->lookup_member( $v->{screen_name} );
-        my $houfu_hash = $self->db->lookup_houfu( $v->{screen_name},$v->{houfu_code});
+        my $user_hash  = $self->db->lookup_member( $v->{screen_name} )
+            or return $self->create_error_set($v_res,'user_not_found');
+        my $houfu_hash = $self->db->lookup_houfu( $v->{screen_name},$v->{houfu_code})
+            or return $self->create_error_set($v_res,'houfu_not_found');
         $stash->{user_hash} = $user_hash;
         $stash->{houfu_hash} = $houfu_hash;
     }

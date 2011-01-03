@@ -1,9 +1,26 @@
 </div>
 <div id="side">
 <div class="box">
+<h3>ユーザ検索(twitter名)</h3>
+<div style="padding:5px;">
+<input type="text" name="screen_name" id="screen_name" ><input type="button" value="さがす" onClick="navToUser();"/>
+<form method="get" id="search_form"></form>
+</div>
+</div>
+<div class="box">
 <div id="houfu-timeline"></div>
 <script src="http://widgets.twimg.com/j/2/widget.js"></script>
 <script>
+
+function navToUser(){
+    var screen_name = document.getElementById('screen_name').value;
+    if(screen_name.length){
+        var form = document.getElementById('search_form'); 
+        form.action = '/user/' + screen_name + '/';
+        form.submit();
+    }
+}
+
 new TWTR.Widget({
 version: 2,
 id: 'houfu-timeline',
