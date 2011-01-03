@@ -13,16 +13,23 @@
 %]
 
 
-<div id="current">
-<h2>[% houfu_hash.houfu_code%]年の抱負</h2>
+<div id="current"><h2><a href="/hoge/">[% houfu_hash.houfu_code%]年の抱負</a></h2>
 <table width="100%">
 <tr>
-<td><img src="[% user_hash.icon_url %]" class="icon" /></td>
+<td><a href="http://twitter.com/[% user_hash.screen_name %]/"><img src="[% user_hash.icon_url %]" class="icon" /></a></td>
 <td><a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="[% user_hash.screen_name %]">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></td>
 <td width="100%" style="background-color:#fff;">[% houfu_hash.body %]</td>
 </tr>
+</tr>
 </table>
 
+</div>
+<div style="padding:3px;background-color:lightgreen;">
+<table><tr>
+<td><a href="http://b.hatena.ne.jp/entry/[% c.req.uri %]" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script></td>
+<td><iframe src="http://www.facebook.com/plugins/like.php?href=[% c.req.uri | uri %]&amp;layout=button_count&amp;show_faces=true&amp;width=300&amp;action=like&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:21px;" allowTransparency="true"></iframe></td>
+</tr>
+</table>
 </div>
 
 [% IF c.member && c.member.screen_name == user_hash.screen_name %]
@@ -39,6 +46,20 @@
     [% houfu_hash.wiki_body | wiki %]
 [% END %]
 
+
+<script type="text/javascript" src="http://s.hatena.ne.jp/js/HatenaStar.js"></script>
+
+<script type="text/javascript">
+Hatena.Star.SiteConfig = {
+entryNodes: {
+'div#current': {
+     uri: 'window.location',
+     title: 'h2',
+     container: 'h2'
+     }
+}
+};
+</script>
 
 
 

@@ -8,7 +8,7 @@
     <form method="post" action="/houfu/[% c.now.year %]/edit/">
     <table>
     <tr><td>
-    <img src="[% c.member.icon_url %]" class="icon">
+    <a href="/user/[% member_houfu.screen_name %]/"><img src="[% c.member.icon_url %]" class="icon"></a>
     </td>
     <td>
         <textarea name="body" cols="80">[% member_houfu.body %]</textarea> 

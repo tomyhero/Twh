@@ -12,7 +12,7 @@
 <table>
 [% FOREACH item IN houfu_items %]
 <tr>
-<td><img src="[% user_hash.icon_url %]"></td><td><div>[% item.body %]</div></td>
+<td><a href="http://twitter.com/[% user_hash.screen_name %]/"><img src="[% user_hash.icon_url %]"></a></td><td><div>[% item.body %]</div></td>
 <td>
 [% view_url = c.req.base _ "user/" _ user_hash.screen_name _ "/" _ item.houfu_code _ "/" %]
 <a href="http://twitter.com/share" data-url="[% view_url %]" class="twitter-share-button" data-count="horizontal" data-via="[% item.screen_name %]">応援なう</a>
